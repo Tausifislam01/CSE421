@@ -1,0 +1,39 @@
+Edge_Router>en
+Edge_Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/0
+%Default route without gateway, if not a point-to-point interface, may impact performance
+Edge_Router(config)#exit
+Edge_Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Edge_Router#show ip route
+
+
+Edge_Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/1 5
+Edge_Router(config)#exit
+Edge_Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Edge_Router#show ip route
+
+Edge_Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Edge_Router(config)#int s0/0/0
+Edge_Router(config-if)#shut
+Edge_Router(config-if)#end
+Edge_Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Edge_Router#show ip route
+
+
+Edge_Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Edge_Router(config)#int s0/0/0
+Edge_Router(config-if)#no shutdown
+
+Edge_Router(config-if)#ipv6 unicast-routing
+Edge_Router(config)#ipv6 route ::/0 2001:DB8:A:2::1 5
